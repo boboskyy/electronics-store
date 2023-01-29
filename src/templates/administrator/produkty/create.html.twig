@@ -1,0 +1,48 @@
+{% extends "/layouts/admin.html.twig" %}
+{% block content %}
+
+	<div class="container admin-form">
+		<div class="row mb-3">
+			<h1>Dodaj Produkt</h1>
+			<a class="" href="{{ route("produkty.index") }}">Powrót do wszystkich produktów</a>
+		</div>
+
+		{% if sessionGet("error__add") %}
+			<div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+				{{ sessionShow("error__add") }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+
+		<form method="POST">
+			<div class="form-group mb-3">
+				<div class="mb-3">
+					<label for="nazwa" class="form-label">Nazwa</label>
+					<input value="Karta graficzna GeForce RTX 3060" id="nazwa" name="nazwa" type="text" class="form-control"/>
+				</div>
+				<div class="mb-3">
+					<label for="kod_producenta" class="form-label">Kod Producenta</label>
+					<input value="b20awh0" id="kod_producenta" name="kod_producenta" type="text" class="form-control"/>
+				</div>
+				<div class="mb-3">
+					<label for="cena" class="form-label">Cena</label>
+					<input id="cena" value="2500" name="cena" type="number" min="1" max="100000" step="0.01" class="form-control"/>
+				</div>
+				<div class="mb-3">
+					<label for="ilosc" class="form-label">Ilość</label>
+					<input id="ilosc" value="1" name="ilosc" type="number" min="0" max="1000" class="form-control"/>
+				</div>
+				<div class="mb-3">
+					<label for="opis" class="form-label">Opis</label>
+					<textarea class="form-control" name="opis" id="opis" cols="5" rows="7">Pamiec: 12 GB, Rodzaj pamieci: GDDR6, Zlacza: HDMI 2.1 - 1 szt., DisplayPort 1.4a - 3 szt.</textarea>
+				</div>
+				<div class="mb-3">
+					<label for="kategoria" class="form-label">Kategoria</label>
+					<input value="Karty graficzne" id="kategoria" name="kategoria" type="text" class="form-control"/>
+				</div>
+				<input class="btn btn-primary" type="submit" value="Dodaj"/>
+			</div>
+		</form>
+	</div>
+
+{% endblock %}
